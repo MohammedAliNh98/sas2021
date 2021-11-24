@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-int choose,chooseagain,chooseagainplease,numberofaccounts,n=0,i,j=0;
+int choose,chooseagain,chooseagainplease,numberofaccounts,n,i,j;
 
-//la définition de la strecture compte_bancaire
+//structure
 typedef struct clients
 {
 	char CIN[10];
@@ -14,28 +14,28 @@ typedef struct clients
 
 }clients;
 struct clients Users[50];
-//prototype de tout les fonctions
+//prototypes of all function
 void add_clients();
 void add_client();
 void afficher_accounts();
 void tri_ascendant();
 void tri_descendant();
 void rechercher_CIN();
-void fedilisation();
 int main()
 {
     double takeammountoradd, smollerorbiggerthen;
     char cin[10];
     do
     {
-      printf("   you add %d accounts\n",n);
-      printf("1   :  add only one account \n");
-      printf("2   :  add one account or more  \n");
-      printf("3   :  Opiration\n");
-      printf("4   :  affichage\n");
-      printf("5   :  rechercher about account by  CIN\n");
-      printf("6   :  Fideclisation\n");
-      printf("7   :  quite\n");
+      call1 :
+      printf("\n\t   you add %d accounts\n\n",n);
+      printf("1   =>  add only one account \n");
+      printf("2   =>  add one account or more  \n");
+      printf("3   =>  Opiration\n");
+      printf("4   =>  affichage\n");
+      printf("5   =>  rechercher about account by  CIN\n");
+      printf("6   =>  Fideclisation\n");
+      printf("7   =>  quite\n");
       printf("\n choose one from those please : ");
       scanf("%d",&choose);
     switch(choose)
@@ -54,14 +54,14 @@ case 2 :
 case 3 :
         do
     {
-       printf("1   : take money from account\n");
-       printf("2   : add money to account \n");
-        printf("3  : GO TO THE PAGE BEFFORE\n");
+       printf("1   => take money from account\n");
+       printf("2   => add money to account \n");
+        printf("3  => GO TO THE PAGE BEFFORE\n");
        printf("\n choose one from those please : ");
        scanf("%d",&chooseagain);
        switch(chooseagain)
           {
-//***************************
+//*********
               case 1:
                     if(n==0){
                     printf("you  must  creet account first\n");
@@ -78,7 +78,7 @@ case 3 :
                      if (takeammountoradd<=Users[i].Montant)
                      {
                      Users[i].Montant=Users[i].Montant-takeammountoradd;
-                     printf("you still have : %.2lf\n",Users[i].Montant);
+                     printf("you still have : %lf\n",Users[i].Montant);
                      }
                     else
                      {
@@ -90,7 +90,7 @@ case 3 :
                     system("pause");
 
 		     break;
-//***************************
+//*********
              case 2 :
                      if(n==0){
                      printf("you have to creat account first \n");
@@ -105,17 +105,17 @@ case 3 :
                      printf ("how much you want to add: ");
                      scanf ("%lf", &takeammountoradd);
                      Users[i].Montant=Users[i].Montant+takeammountoradd;
-                     printf("know you have : %.2lf\n",Users[i].Montant);
+                     printf("know you have : %lf\n",Users[i].Montant);
                      }
                      }
                      }
                      system("pause");
                 break ;
-//***************************
+//*********
                 case 3:
-                     printf(" GO TO THE PAGE BEFFORE THIS  \n");
+                     goto call1;
                 break ;
-//***************************
+//*********
        }
     }while(chooseagain!=3);
      break;
@@ -123,11 +123,11 @@ case 3 :
 case 4:
       do
        {
-      printf("1   :  tri accounts ascendant \n");
-      printf("2   :  tri account descendant\n");
-      printf("3   : tri account ascendant by order from the number that you will give it to me \n");
-      printf("4   :  tri account descendant by order from the number that you will give it to me\n");
-       printf("5  :  GO TO THE PIGE BIFFORE THIS\n");
+      printf("1   =>  tri accounts ascendant \n");
+      printf("2   =>  tri account descendant\n");
+      printf("3   =>  tri account ascendant by order from the number that you will give it to me \n");
+      printf("4   =>  tri account descendant by order from the number that you will give it to me\n");
+       printf("5  =>  GO TO THE PIGE BIFFORE THIS\n");
        printf("\n choose one from those please : ");
        scanf("%d",&chooseagainplease);
        switch(chooseagainplease)
@@ -157,7 +157,7 @@ case 4:
                 {
                 if(Users[i].Montant>smollerorbiggerthen)
                 {
-                printf("CIN :%s\nNom : %s\nPrenom : %s\nMontant : %.2lf DH\n",Users[i].CIN,Users[i].Nom,Users[i].Prenom,Users[i].Montant);
+                printf("CIN :%s\nNom : %s\nPrenom : %s\nMontant : %lf DH\n",Users[i].CIN,Users[i].Nom,Users[i].Prenom,Users[i].Montant);
                 }
                 printf("**\n");
                 }
@@ -178,7 +178,7 @@ case 4:
                  {
                  if(Users[j].Montant>smollerorbiggerthen)
                  {
-                 printf("CIN :%s\nNom : %s\nPrenom : %s\nMontant : %.2lf DH\n",Users[j].CIN,Users[j].Nom,Users[j].Prenom,Users[j].Montant);
+                 printf("CIN :%s\nNom : %s\nPrenom : %s\nMontant : %lf DH\n",Users[j].CIN,Users[j].Nom,Users[j].Prenom,Users[j].Montant);
                  }
                  }
                  }
@@ -186,11 +186,11 @@ case 4:
         break;
 //===========================================================
         case 5 :
-                printf(" thanks for bieng here see you next time by  \n");
+        goto call1 ;
         break;
 break;
 }
-}while(chooseagain!=4);
+}while(chooseagainplease!=5);
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 case 5:
           if(n==0){
@@ -203,35 +203,33 @@ case 5:
 break;
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 case 6 :
-
-      if(n<3){
+     if(n<3){
       for( i =1;i<=n;i++){
-      printf("\n- we gonna add 1.3 to %s  : %.2lf",Users[i].CIN,Users[i].Montant);
-      printf("\n");
+      printf("\n- we gonna add 1.3 to %s  : %lf",Users[i].CIN,Users[i].Montant);
+      printf("\n\n");
       Users[i].Montant += (Users[i].Montant*1.3)/100;
-      printf("\nnow he have  %.2lf ",Users[i].Montant);
-       printf("\n");
+      printf("\nnow he have  %lf ",Users[i].Montant);
+       printf("\n\n");
       }
      }
      else{
      tri_descendant();
      for( i =1;i<=3;i++){
-     printf("\n- we gonna add 1.3 to %s  : %.2lf",Users[i].CIN,Users[i].Montant);
+     printf("\n- we gonna add 1.3 to %s  : %lf",Users[i].CIN,Users[i].Montant);
       printf("\n");
       Users[i].Montant += (Users[i].Montant*1.3)/100;
-      printf("\n now he have %.2lf ",Users[i].Montant);
+      printf("\n now he have %lf ",Users[i].Montant);
       printf("\n");
      }
      }
      break ;
 
-
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 case 7:
-          printf ("thanks for bieng here see you nexr time");
+          printf (" \t\t\t\t thanks for bieng here see you next time mate");
 break ;
 
-default : printf("your chooce is not working \n");
+default : printf("your choice is not working \n");
            system("pause");
 
 }
@@ -247,13 +245,13 @@ return 0;
    printf("\n\n");
    for(i=1;i<=numberofaccounts;i++) {
       printf("give me information about account number %d :  \n",n+1);
-      printf("CIN : ");
+      printf("give me CIN : ");
       scanf("%s",Users[n+1].CIN);
-      printf("Nom : ");
+      printf(" give me family name : ");
       scanf("%s",Users[n+1].Nom);
-      printf("Prenom : ");
+      printf("give me name : ");
       scanf("%s",Users[n+1].Prenom);
-      printf("Montant : ");
+      printf("give me ammount : ");
       scanf("%lf",&Users[n+1].Montant);
       n=n+1;
 }
@@ -261,31 +259,30 @@ return 0;
 //===========================================================================+++++++============
 void add_client()
 {
-    printf("\n\n");
     printf("give me informations about account number %d :  \n\n",n+1);
-    printf(" your CIN : ");
+    printf(" give me CIN : ");
     scanf("%s",Users[n+1].CIN);
-    printf("your Name : ");
+    printf("give me family name : ");
     scanf("%s",Users[n+1].Nom);
-    printf("your family name: ");
+    printf("give me name: ");
     scanf("%s",Users[n+1].Prenom);
-    printf("your amount : ");
+    printf("give me amount : ");
     scanf("%lf",&Users[n+1].Montant);
     n=n+1;
     printf("\n\n");
 }
-//******************************
+//**********
 void afficher_accounts()
 {
 
     for(i=1;i<=n;i++)
     {
 
-        printf("CIN :%s\nNom : %s\nPrenom : %s\nMontant : %.2lf DH\n",Users[i].CIN,Users[i].Nom,Users[i].Prenom,Users[i].Montant);
+        printf("CIN :%s\nNom : %s\nPrenom : %s\nMontant : %lf DH\n",Users[i].CIN,Users[i].Nom,Users[i].Prenom,Users[i].Montant);
     }
 }
 
-//***************************
+//*********
 void tri_ascendant()
 {
     char tempCIN[10], tempNom[20], tempPrenom[20];
@@ -315,3 +312,63 @@ void tri_ascendant()
         }
     }
 }
+//*********
+ void tri_descendant()
+{
+    char tempCIN[10], tempNom[20], tempPrenom[20];
+    double tempMontant;
+    for(i=1;i<n;i++)
+    {
+        for(j=i+1;j<=n;j++)
+        {
+            if(Users[j].Montant>Users[i].Montant)
+            {
+                //permutation
+                strcpy(tempCIN,Users[i].CIN);
+                strcpy(Users[i].CIN,Users[j].CIN);
+                strcpy(Users[j].CIN,tempCIN);
+
+                strcpy(tempNom,Users[i].Nom);
+                strcpy(Users[i].Nom,Users[j].Nom);
+                strcpy(Users[j].Nom,tempNom);
+
+                strcpy(tempPrenom,Users[i].Prenom);
+                strcpy(Users[i].Prenom,Users[j].Prenom);
+                strcpy(Users[j].Prenom,tempPrenom);
+
+                tempMontant=Users[i].Montant;
+                Users[i].Montant=Users[j].Montant;
+                Users[j].Montant=tempMontant;
+            }
+        }
+    }
+}
+
+//**********
+void rechercher_CIN()
+{
+      char cin[10];
+      int j=0;
+      printf(" Saisir CIN : ");
+      scanf("%s",cin);
+      for(i=1;i<=n;i++)
+      {
+        if(strcmp(Users[i].CIN,cin)==0)
+        {
+            printf("\n rechercher about account by CIN : \n");
+            printf("CIN : %s\n",Users[i].CIN);
+            printf("Nom : %s\n",Users[i].Nom);
+            printf("Prenom : %s\n",Users[i].Prenom);
+            printf("Montant : %lf DH\n\n",Users[i].Montant);
+            j++;
+        }
+      }
+      if(j==0)
+      {
+            printf("the account doas not exist \n");
+      }
+}
+//=====================================================================
+
+
+
